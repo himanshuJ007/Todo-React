@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
-
+import 'antd/dist/antd.css';
+import { Route , BrowserRouter as Router, Switch } from 'react-router-dom'
+import {AddTodo} from "./components/addTodo";
+import {CompletedTodos} from "./components/completedTodos";
+import {NotCompletedTodos} from "./components/notCompletedTodos";
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          <Router>
+              <Switch>
+                  <Route exact path='/' component={AddTodo}></Route>
+                  <Route exact path='/completed' component={CompletedTodos}></Route>
+                  <Route exact path='/pending' component={NotCompletedTodos}></Route>
+              </Switch>
+          </Router>
       </header>
     </div>
   );
 }
-
 export default App;
